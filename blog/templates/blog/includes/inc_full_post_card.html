@@ -1,0 +1,6 @@
+{% load my_tags %}
+<article class="blog-post">
+    <h2 class="display-5 link-body-emphasis mb-1">{{ post.title }}</h2>
+    <p class="blog-post-meta">{{ post.creation_date | date:'d F Y' }} • <a href="#!">{{ post.author.first_name }}</a> Просмотры: {{ post.views_count }}</p>
+    {{ post.content }}
+</article>

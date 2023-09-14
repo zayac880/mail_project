@@ -1,0 +1,50 @@
+{% extends 'frontend/base.html' %}
+
+{% block title %}Создать рассылку{% endblock %}
+
+{% block menu_mailings_active %}active{% endblock %}
+
+
+{% block content %}
+    <div class="album py-5 bg-body-tertiary">
+
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="card p-5" style="width: 90vw;">
+                    <a href="{% url 'contacts:list_contact' %}" class="btn btn-success" >Back</a>
+                    <table class="table table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <th>{{ contacts.id }}</th>
+                        </tr>
+                        <tr>
+                            <td>Telephone</td>
+                            <td>{{ contacts.telephone }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>{{ contacts.email }}</td>
+                        </tr>
+                        <tr>
+                            <td>Date added</td>
+                            <td>{{ contacts.date_added }}</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>{{ contacts.status }}</td>
+                        </tr>
+                        <tr>
+                            <td>User</td>
+                            <td>{{ contacts.user }}</td>
+                        </tr>
+                        <tr>
+                            <td>List</td>
+                            <td>{{ contacts.list }}</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

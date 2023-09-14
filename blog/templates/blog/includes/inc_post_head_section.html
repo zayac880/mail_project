@@ -1,0 +1,11 @@
+<section class="text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <p class="lead text-body-secondary">{{ description }}</p>
+            <p>
+                <a href="{% url 'blog:create_post' %}" class="btn btn-primary my-2">Создать пост</a>
+                <a href="{% url 'frontend:index' %}" class="btn btn-secondary my-2">На главную</a>
+            </p>
+        </div>
+    </div>
+</section>

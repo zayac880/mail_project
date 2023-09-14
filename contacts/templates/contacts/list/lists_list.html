@@ -1,0 +1,17 @@
+{% extends 'frontend/base.html' %}
+
+{% block title %}Списки доступных рассылок{% endblock %}
+
+{% block menu_mailings_active %}active{% endblock %}
+
+{% block content %}
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for list, contact in lists %}
+                    {% include 'contacts/list/includes/inc_lists_card.html' with list=list contact=contact%}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">{{ current_list.name }}</h1>
+            <h5 class="fw-light">
+            Контакты – {{ contact_activity_status.total }} • Активные – {{ contact_activity_status.active }} • Неактивные – {{ contact_activity_status.inactive }}
+            </h5>
+            <p class="lead text-body-secondary">{{ description }}</p>
+            <p>
+                <a href="{% url 'contacts:update_list' current_list.pk %}" class="btn btn-primary my-2">Добавить контакты</a>
+                <a href="{% url 'contacts:list_list' %}" class="btn btn-secondary my-2">К странице списков</a>
+            </p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+<div class="col">
+    <div class="card shadow-sm">
+        <svg class="bd-placeholder-img card-img-top justify-content-end" width="100%" height="50"
+                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>{{ list.name }}</title>
+            <rect x="0" width="50%" height="100%" fill="#39c14c"></rect>
+            <text x="25%" y="50%" text-anchor="middle" alignment-baseline="middle" fill="#eceeef">
+                Активные – {{ contact.active }}
+            </text>
+            <rect x="50%" width="50%" height="100%" fill="#de292c"></rect>
+            <text x="75%" y="50%" text-anchor="middle" alignment-baseline="middle" fill="#eceeef">
+                Неактивные – {{ contact.inactive }}
+            </text>
+        </svg>
+
+        <div class="card-body">
+            <p class="card-text">
+                {{ list.name }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a href="{% url 'contacts:detail_list' list.pk %}" class="btn btn-sm btn-outline-secondary">View</a>
+                    <a href="{% url 'contacts:update_list' list.pk %}"
+                            class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a href="{% url 'contacts:delete_list' list.pk %}" class="btn btn-sm btn-outline-secondary">Delete</a>
+                </div>
+                <small class="text-body-secondary">9 mins</small>
+            </div>
+        </div>
+    </div>
+</div>

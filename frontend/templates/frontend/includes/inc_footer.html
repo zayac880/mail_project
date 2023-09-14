@@ -1,0 +1,110 @@
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-white text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <!-- Left -->
+        <div class="me-5 d-none d-lg-block">
+            <span>Присоединяйтесь к нам в социальных сетях:</span>
+        </div>
+        <!-- Left -->
+
+        <!-- Right -->
+        <div>
+            <a href="#!" class="me-4 link-secondary" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/zayac880" class="me-4 link-secondary" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3 text-secondary"></i>Mail_project by hare
+                    </h6>
+                    <p>
+                        "Mail_project by hare" - это приложение для создания, отправки и управления эффективными
+                        email-рассылками. Создавайте креативные письма, управляйте списками контактов и анализируйте результаты кампаний, чтобы достичь большей эффективности в email-маркетинге.
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Products
+                    </h6>
+                    <p>
+                        <a href="{% url 'frontend:index' %}" class="text-reset">Рассылки</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Телеграм боты</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Полезные утилиты</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Веб-приложения</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Микросервисы</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Useful links
+                    </h6>
+                    {% if user.is_staff %}
+                    <p>
+                        <a href="/admin" target="_blank" class="text-reset">Админ панель</a>
+                    </p>
+                    {% endif %}
+                    <p>
+                        <a href="#!" class="text-reset">Помощь</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home me-3 text-secondary"></i> Россия, Москва </p>
+                    <p>
+                        <i class="fas fa-envelope me-3 text-secondary"></i>
+                        zayac880880@mail.ru
+                    </p>
+                    <p><i class="fas fa-brands fa-telegram me-3 text-secondary"></i> @Zayac880 </p>
+                    <p><i class="fas fa-phone me-3 text-secondary"></i> +7(950)066-44-90 </p>
+
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+        © 2023 Copyright:
+        <a class="text-reset fw-bold" href="https://github.com/zayac880">Mail_project by hare</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->

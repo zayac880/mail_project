@@ -1,0 +1,48 @@
+<div class="col">
+    <div class="card shadow-sm">
+        {#        <svg class="bd-placeholder-img card-img-top justify-content-end" width="100%" height="50"#}
+        {#                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"#}
+        {#                preserveAspectRatio="xMidYMid slice" focusable="false">#}
+        {#            <title>{{ mail.message_title }}</title>#}
+        {#            <rect x="0" width="50%" height="100%" fill="#39c14c"></rect>#}
+        {#            <text x="25%" y="50%" text-anchor="middle" alignment-baseline="middle" fill="#eceeef">#}
+        {#                Thumbnail#}
+        {#            </text>#}
+        {##}
+        {#            <rect x="50%" width="50%" height="100%" fill="#de292c"></rect>#}
+        {#            <text x="75%" y="50%" text-anchor="middle" alignment-baseline="middle" fill="#eceeef">#}
+        {#                Thumbnail#}
+        {#            </text>#}
+        {#        </svg>#}
+        <div class="card-header">
+            {{ mail.title }} <br>
+            (ID: {{ mail.pk }})
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                <b>{{ mail.message_title }}</b><br><br>
+                {{ mail.message_content | truncatewords:15 }}
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a href="{% url 'mailings:detail_mailing' mail.pk %}"
+                            class="btn btn-sm btn-outline-secondary">View</a>
+                    <a href="{% url 'mailings:update_mailing' mail.pk %}"
+                            class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a href="{% url 'mailings:delete_mailing' mail.pk %}" class="btn btn-sm btn-outline-secondary">Delete</a>
+                </div>
+                <small class="text-body-secondary">{{ mail.date_created | date:'M d, h:i' }}</small>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'mailings:start_mailing' mail.pk %}"
+                {% if mail.setting.status == 'running' %}
+                    class="btn btn-danger">
+                    Stop
+                {% elif mail.setting.status == 'completed' %}
+                    class="btn btn-success">
+                    Start
+                {% endif %}</a>
+        </div>
+    </div>
+</div>

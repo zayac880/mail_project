@@ -1,0 +1,25 @@
+{% extends 'frontend/base.html' %}
+
+{% block title %}Создать рассылку{% endblock %}
+
+{% block menu_mailings_active %}active{% endblock %}
+
+{% block head_section %}
+    {% if user.is_authenticated %}
+        {% include 'blog/includes/inc_post_head_section.html' with post=post slug=post.slug %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <div class="row g-5 justify-content-center">
+        <div class="col-md-8 pt-5">
+            <h2 class="display-5 link-body-emphasis mb-1">{{ post.title }}</h2>
+            <p class="blog-post-meta">{{ post.creation_date | date:'d M Y' }} <a
+                    href="#!">{{ post.author.first_name }}</a></p>
+        </div>
+        <div class="col-md-8">
+            <article class="blog-post">
+                {{ post.content }}
+            </article>
+        </div>
+    </div>
+{% endblock %}

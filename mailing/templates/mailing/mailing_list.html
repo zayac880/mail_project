@@ -1,0 +1,21 @@
+{% extends 'frontend/base.html' %}
+
+{% block title %}Списки доступных рассылок{% endblock %}
+
+{% block menu_mailings_active %}active{% endblock %}
+
+{% block head_section %}
+    {% include 'mailing/includes/inc_mailings_head_section.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for mail in mailings %}
+                    {% include 'mailing/includes/inc_mailing_card.html' with mail=mail %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

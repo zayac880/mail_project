@@ -1,0 +1,61 @@
+{% extends 'frontend/base.html' %}
+
+{% block title %}Создать рассылку{% endblock %}
+
+{% block menu_mailings_active %}active{% endblock %}
+
+
+{% block content %}
+    <div class="album py-5 bg-body-tertiary">
+
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="card p-5" style="width: 90vw;">
+                    <a href="{% url 'mailings:list_mailing' %}" class="btn btn-success" >Back</a>
+                    <table class="table table-hover">
+                        <tr>
+                            <th>ID рассылки</th>
+                            <th>{{ mailing.id }}</th>
+                        </tr>
+                        <tr>
+                            <td>Название рассылки</td>
+                            <td>{{ mailing.title }}</td>
+                        </tr>
+                        <tr>
+                            <td>Тема сообщения</td>
+                            <td>{{ mailing.message_title }}</td>
+                        </tr>
+                        <tr>
+                            <td>Сообщение</td>
+                            <td>{{ mailing.message_content }}</td>
+                        </tr>
+                        <tr>
+                            <td>Периодичность рассылки</td>
+                            <td>{{ mailing.setting.mailing_periods }}</td>
+                        </tr>
+                        <tr>
+                            <td>Статус рассылки</td>
+                            <td>{{ mailing.setting.status }}</td>
+                        </tr>
+                        <tr>
+                            <td>Дата начала</td>
+                            <td>{{ mailing.setting.start_date | date:'d-M-Y' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Время рассылки</td>
+                            <td>{{ mailing.setting.mailing_time | date:'H:i'  }}</td>
+                        </tr>
+                        <tr>
+                            <td>День недели</td>
+                            <td>{{ mailing.setting.mailing_week_day_num }}</td>
+                        </tr>
+                        <tr>
+                            <td>Дата окончания</td>
+                            <td>{{ mailing.setting.end_date | date:'d-M-Y'  }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

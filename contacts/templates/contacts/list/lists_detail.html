@@ -1,0 +1,112 @@
+{% extends 'frontend/base.html' %}
+
+{% block title %}Создать рассылку{% endblock %}
+
+{% block menu_mailings_active %}active{% endblock %}
+
+{% block styles %}
+    <style>
+        #dataTable_filter input[type="search"] {
+            /* Примените класс form-control и другие стили по вашему усмотрению */
+            /* Например: */
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+#dataTable_filter label {
+    /* Просто для примера - добавление стилей к метке */
+    margin: 0;
+    color: #FFF;
+}
+    </style>
+{% endblock %}
+{% block head_section %}
+    {% include 'contacts/list/includes/inc_lists_head_section.html' with current_list=current_list contact_activity_status=contact_activity_status %}
+{% endblock %}
+{% block content %}
+    <div class="album py-5 bg-body-tertiary">
+
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
+                <div class="card p-5" style="width: 90vw;">
+                    <table class="table table-bordered table-intel table-hover" id="dataTable">
+                        <thead>
+                        <tr class="table-info">
+                            <th>Email</th>
+                            <th>Статус</th>
+                            <th>Дата добавления</th>
+                            <th>Списки</th>
+                            <th>Телефон</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for contact, contact_in_lists in lists %}
+                            <tr>
+                                <td>{{ contact.contact.email }}</td>
+                                <td>{{ contact.contact.status }}</td>
+                                <td>{{ contact.contact.date_added | date:"Y-M-d H:m" }}</td>
+                                <td>
+                                    {% if contact_in_lists.count > 1 %}
+                                        {{ contact_in_lists.0.list.name }} +
+                                        {{ contact_in_lists | slice:'1:' | length }}
+                                    {% else %}
+                                        {{ contact_in_lists.0.list.name }}
+                                    {% endif %}
+
+                                </td>
+                                <td>{{ contact.contact.telephone }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block bottom_script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+    <script>
+        $(function () {
+            $('#dataTable').DataTable({
+                "paging": false,
+                "info": false
+            });
+        });
+
+        $('thead th').each(function (column) {
+            $(this).addClass('sortable').click(function () {
+                let findSortKey = function ($cell) {
+                    let sk = $cell.find('.sort-key').text().toUpperCase() + ' ' + $cell.text().toUpperCase();
+                    let ik = parseInt(sk, 10);
+                    return ik != NaN ? ik : sk;
+                };
+                let sortDirection = $(this).is('.sorted-asc') ? -1 : 1;
+                let $rows = $(this).parent().parent().parent().find('tbody tr').get();
+                $.each($rows, function (index, row) {
+                    row.sortKey = findSortKey($(row).children('td').eq(column));
+                });
+                $rows.sort(function (a, b) {
+                    if (a.sortKey < b.sortKey) return -sortDirection;
+                    if (a.sortKey > b.sortKey) return sortDirection;
+                    return 0;
+                });
+                $.each($rows, function (index, row) {
+                    $('tbody').append(row);
+                    row.sortKey = null;
+                });
+                $('th').removeClass('sorted-asc sorted-desc');
+                let $sortHead = $('th').filter(':nth-child(' + (column + 1) + ')');
+                sortDirection == 1 ? $sortHead.addClass('sorted-asc') : $sortHead.addClass('sorted-desc');
+                $('td').removeClass('sorted')
+                    .filter(':nth-child(' + (column + 1) + ')')
+                    .addClass('sorted');
+            });
+        });
+
+    </script>
+{% endblock %}
